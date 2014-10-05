@@ -1,0 +1,11 @@
+﻿@media (min-width: 768px) {
+    #contactHeader {
+        margin-top: 4px;
+    }
+}
+
+@media (max-width:768px) {
+    #contactHeader{
+        margin-top: 10px;
+    }
+}

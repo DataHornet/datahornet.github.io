@@ -1,0 +1,76 @@
+﻿html, body {
+    background-color: white;
+    height: 100%;
+}
+body {
+    padding-top: 30px;
+    overflow-x: hidden;
+    width:90%;
+    margin:auto;
+}
+
+#frame {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.page {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0px;
+    display: none;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: transparent;
+}
+#coreNavBar, #accountNav{
+    z-index:20;
+}
+#accountNav{
+    position:fixed;
+    top:0;
+    left:0;
+    margin:0;
+    padding:4px;
+    background-color:black;
+    height:30px;
+    width: 100%;
+    text-align:center;
+    line-height: 24px;
+        padding-right: 12px;
+}
+#accountNav span{
+    cursor:pointer;
+}
+#accountNav > div{
+    float:right;
+    padding-right:8px;
+    padding-left:8px;
+}
+#coreNavBar {
+    opacity: 1;
+    font-size: 16px;
+}
+#footer{
+    opacity: 1;
+    background-color:white;
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    border-top: 1px solid lightgrey;
+    width: 100%;
+    left: 0;
+    line-height: 40px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin:0px;
+}
+
+
+@media (min-width: 768px) {
+    #accountNav{
+    padding-right: 28px;
+    }
+}
