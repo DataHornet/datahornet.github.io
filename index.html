@@ -12,6 +12,11 @@
     <link href="Plugins/Bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="Plugins/Themes/bootstrap.min.css" rel="stylesheet" />
 
+    <!--Animations-->
+    <link href="Plugins/Animations/animations.css" rel="stylesheet" />
+
+    <link href="core/coreStyles.css" rel="stylesheet" />
+
     <link href="index.css" rel="stylesheet" type="text/css" />
 
     <script src="Index/Home/home.js" type="text/javascript"></script>
@@ -36,7 +41,16 @@
             //Show first page
             $($(".page").get(0)).show();
 
-            $(".nav-pills").first("li").addClass("active");
+            setTimeout(function () {
+                //Show first subpage
+                $(".subPage").hide();
+                var $firstSub = $(".subMenu li").first()
+                var submenuTarget = $firstSub.attr("data-submenu-target")
+                $firstSub.addClass("active");
+                $(".subPage[data-submenu='" + submenuTarget + "']").show();
+
+                $(".nav-pills").first("li").addClass("active");
+            }, 500);
 
             //Trigger page change
             $("body").on("click", "*[role='navigate']", function () {
@@ -155,7 +169,7 @@
                     <div class="row section">
                         <div class="animated" data-animation="fadeInDown">
                             <h4 style="text-align: center;">Scalable, stable and modern websites</h4>
-                            <h5 style="text-align: center; margin-bottom:24px;">Using only the latest and greatest technologies while retaining backwards compatibility</h5>
+                            <h6 style="text-align: center; margin-bottom:24px;">Using only the latest and greatest technologies while retaining backwards compatibility</h6>
                             <div class="flipbar row">
                                 <div class="bar col-sm-2">
                                     <div>
@@ -223,14 +237,54 @@
                     <div class="row section">
                         <div class="col-md-6 animated" data-animation="fadeInDown">
                             <h4>Full control</h4>
-                            <h5>We can provide tools to allow you to control elements of your website. Such as adding new content, changing current content, rebranding and more</h5>
+                            <h6>We can provide tools to allow you to control elements of your website. Such as adding new content, changing current content, rebranding and more</h6>
                         </div>
                         <div class="col-md-6 animated" data-animation="flipInX" style="padding:8px">
                             <img src="Index/Home/img/adminpanel.jpg" style="display:block; width:100%; height:100%"/>
                         </div>
                     </div>
                     <div class="row section">
-                        Blah blah
+                        <h4>Pricing schemes to suit your needs</h4>
+                        <h6 style="margin-bottom: 1.5em;">All quotes will come with a series of pricing options to give full flexibility with your budget to make sure you get the best bang for your buck</h6>
+                        <div class="col-md-4">
+                            <div class="pricingOption panel">
+                                <div class="pricingOption-header panel-heading bg-hourly"><h5>Hourly</h5></div>
+                                <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Fixed fee per hour</li>
+                                        <li class="list-group-item">Frozen for a year</li>
+                                        <li class="list-group-item">Get an time estimate for every task before committing to it</li>
+                                        <li class="list-group-item">Option for simple websites</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pricingOption panel">
+                                <div class="pricingOption-header panel-heading bg-fixed"><h5>Fixed</h5></div>
+                                <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Set fee for whole jobs</li>
+                                        <li class="list-group-item">Job will be complete in the quoted time with no price fluctuations</li>
+                                        <li class="list-group-item">Includes code handover once job is complete</li>
+                                        <li class="list-group-item">Option for larger websites</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pricingOption panel">
+                                <div class="pricingOption-header panel-heading bg-mixed"><h5>Fixed & Supported</h5></div>
+                                <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Set fee for whole jobs</li>
+                                        <li class="list-group-item"><b>Greatly</b> reduced hourly fee for site maintenance for a year</li>
+                                        <li class="list-group-item">Jobs not exceeding 1 hour are free</li>
+                                        <li class="list-group-item">Option for growing websites</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="subPage" data-submenu="consultancy" style="display:block">
