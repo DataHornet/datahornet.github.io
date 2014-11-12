@@ -1,485 +1,120 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="datahornet">
 <head>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
-    <!---JQuery--->
-    <script src="Plugins/jQuery/jquery-2.1.1.js"></script>
-    <script src="Plugins/jQuery/jquery-ui.min.js"></script>
+        <link rel="shortcut icon" href="/favicons/favicon.ico">
+        <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+        <meta name="apple-mobile-web-app-title" content="Data Hornet">
+        <link rel="icon" type="image/png" href="/favicons/favicon-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/favicons/favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+        <meta name="msapplication-TileColor" content="#ff9933">
+        <meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+        <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+        <meta name="application-name" content="Data Hornet">
 
-    <!---Bootstrap--->
-    <script src="Plugins/Bootstrap/js/bootstrap.min.js"></script>
-    <link href="Plugins/Bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="Plugins/Themes/bootstrap.min.css" rel="stylesheet" />
+        <!---JQuery and Angular--->
+        <script src="Plugins/jQuery/jquery-2.1.1.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
 
-    <!--Animations-->
-    <link href="Plugins/Animations/animations.css" rel="stylesheet" />
+        <!---Bootstrap--->
+        <script src="Plugins/Bootstrap/js/bootstrap.min.js"></script>
+        <link href="Plugins/Bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link href="Plugins/Themes/bootstrap.min.css" rel="stylesheet" />
 
-    <link href="core/coreStyles.css" rel="stylesheet" />
+        <!--Animations-->
+        <link href="Plugins/Animations/animations.css" rel="stylesheet" />
+        <script src="Plugins/Animations/Animations.js"></script>
 
-    <link href="index.css" rel="stylesheet" type="text/css" />
+        <script src="Plugins/ImageMap/jquery.rwdImageMaps.js"></script>
+        <script src="Plugins/responsiveImageMap/responsiveImageMap.js"></script>
+        <script src="Plugins/MenuTools/menuTools.js"></script>
+        <script src="Plugins/transferAnimator/transferAnimator.js"></script>
+        <link href="Plugins/transferAnimator/transferAnimator.css" rel="stylesheet" />
 
-    <script src="Index/Home/home.js" type="text/javascript"></script>
-    <link href="Index/Home/home.css" rel="stylesheet" type="text/css" />
-    <link href="Index/Home/fliplist.css" rel="stylesheet" type="text/css" />
+        <link href="index.css" rel="stylesheet" type="text/css" />
+        <script src="indexA.js"></script>
 
-    <script src="Index/Blog/blog.js" type="text/javascript"></script>
-    <link href="Index/Blog/blog.css" rel="stylesheet" type="text/css" />
-
-    <link href="Index/Contact/contact.css" rel="stylesheet" type="text/css" />
-    <title>Data Hornet</title>
-    <style>
-        @media (max-width: 480px) {
-            .hidden-xxs {
-                display: none !important;
-            }
-        }
-    </style>
-    <script>
-
-        $(document).ready(function () {
-            //Show first page
-            $($(".page").get(0)).show();
-
-            setTimeout(function () {
-                //Show first subpage
-                $(".subPage").hide();
-                var $firstSub = $(".subMenu li").first()
-                var submenuTarget = $firstSub.attr("data-submenu-target")
-                $firstSub.addClass("active");
-                $(".subPage[data-submenu='" + submenuTarget + "']").show();
-
-                $(".nav-pills").first("li").addClass("active");
-            }, 500);
-
-            //Trigger page change
-            $("body").on("click", "*[role='navigate']", function () {
-                var targetPage = $(this).attr("data-target");
-                switchPage(targetPage);
-
-                $("#coreNavBar").find(".active").removeClass("active");
-                $(this).closest("li").addClass("active");
-            })
-
-            var slideLock = false;
-            function switchPage(id) {
-                var duration = 600;
-                var currentPage = $(".page:visible");
-                
-                if (slideLock)
-                    return;
-
-                if ($(id).attr("id") == $(currentPage).attr("id"))
-                    return;
-
-                var arriveDirection = "";
-                var leaveDirection = "";
-
-                if ($(id).index() > $(currentPage).index()) {
-                    arriveDirection = "right";
-                    leaveDirection = "left";
-                } else {
-                    arriveDirection = "left";
-                    leaveDirection = "right";
-                }
-
-                slideLock = true;
-
-                $(id).promise().done(function () {
-                    slideLock = false;
-                });
-                shiftPage();
-                function shiftPage()
-                {
-                    var nextPage;
-                    var trueSpeed = duration;
-                    /*
-                    if (arriveDirection == "right") {
-                        nextPage = $(currentPage).next(".page");
-                    } else {
-                        nextPage = $(currentPage).prev(".page");
-                    }*/
-
-                    nextPage = $(id)
-                    /*
-                    $(currentPage).toggle("slide", { direction: leaveDirection }, duration);
-                    $(nextPage).toggle("slide", { direction: arriveDirection }, duration);*/
-
-                    $(currentPage).fadeOut();
-                    $(nextPage).fadeIn();
-
-                    /*
-                    $(nextPage).promise().done(function () {
-                        if ($(nextPage).attr("id") != $(id).attr("id")) {
-                            currentPage = nextPage;
-                            shiftPage();
-                        }
-                    });*/
+        <link href="Index/Contact/contact.css" rel="stylesheet" type="text/css" />
+        <title>Data Hornet</title>
+        <style>
+            @media (max-width: 480px) {
+                .hidden-xxs {
+                    display: none !important;
                 }
             }
-        });
-    </script>
-</head>
-<body>
-    <!--Account bar-->
-    <div id="accountNav" class="row">
-        <div style="float:right">
-            <span style="color:white"><span class="glyphicon glyphicon-lock"></span> Login</span>
+
+            .box {
+                position: absolute;
+            }
+            .containment{
+                height: calc(100% - 50px);
+            }
+            .row {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        </style>
+    </head>
+    <body class="background" dh-core>
+        <div class="row" style="height:64px;">
+            <nav id="coreNavBar" class="navbar navbar-default animated" role="navigation" style="margin: 0px;" data-animation-show="fadeIn" data-animation-hide="fadeOut" ng-if="navbar==true">
+                <a class="navbar-header">
+                    <a class="navbar-brand" href="#" style="padding: 10px; width: 60px;">
+                        <img src="img/logoIcon.png" style="height:100%" href="#home" role="tab" data-toggle="tab">
+                    </a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navB">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </a>
+
+                <div class="navbar-collapse collapse in" id="navB">
+                    <ul class="nav navbar-nav navbar-right" style="margin-left: 5px; margin-right: 5px;">
+                        <li class="navbarLink" ng-click="openTab('blog');">
+                            <img id="navBlog" class="navbarButton" src="img/BlogText_Medium.png">
+                        </li>
+                        <li class="navbarLink" ng-click="openTab('contact');">
+                            <img id="navContact" class="navbarButton" src="img/GetInTouchText_Medium.png">
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" style="margin-left: 5px; margin-right: 5px;">
+                        <li class="navbarLink" ng-click="openTab('training');">
+                            <img id="navTraining" class="navbarButton" src="img/TrainingText_Medium.png">
+                        </li>
+                        <li class="navbarLink" ng-click="openTab('contact');">
+                            <img id="navConsult" class="navbarButton" src="img/ConsultText_Medium.png">
+                        </li>
+                        <li class="navbarLink" ng-click="openTab('systems');">
+                            <img id="navSystems" class="navbarButton" src="img/SystemsText_Medium.png">
+                        </li>
+                        <li class="navbarLink" ng-click="openTab('webdev');">
+                            <img id="navWebdev" class="navbarButton" src="img/WebDevText_Medium.png">
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </div>
-    <!---Navigation bar-->
-    <nav id="coreNavBar" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0px; opacity: 0.9; margin-top: 30px;">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navB">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div id="heading">
-                <img src="Resources/img/header-logo.png" class="img-responsive visible-xs-block" style="height:50px; margin:5px;" />
+        <div id="contentWrapper" class="row containment">
+            <div id="tabHome" role="tabpanel" class="tab containment" ng-if="tab==undefined" dh-home>
+            </div>
+            <div id="tabBlog" class="tab containment" ng-if="tab=='blog'" dh-blog>
+            </div>
+            <div id="tabContact" class="tab-pane containment" ng-if="tab=='contact'" dh-contact>
             </div>
         </div>
-        <div class="collapse navbar-collapse" id="navB">
-            <ul class="nav navbar-nav navbar-right" style="margin-left: 5px; margin-right: 5px;">
-                <li class="active"><a href="#" role="navigate" data-target="#homePage"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#" role="navigate" data-target="#blogPage"><span class="glyphicon glyphicon-pencil"></span> Blog</a></li>
-                <li><a href="#" role="navigate" data-target="#contactPage"><span class="glyphicon glyphicon-send"></span> Get in touch</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div id="frame">
-        <div id="homePage" class="page" style="padding: 0px;">
-            <!---Primary section-->
-            <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
-                <div class="col-sm-6 hidden-xs">
-                    <div class="fadein" style="height: 70vh; background-image: url('Resources/img/main-logo.png'); background-repeat: no-repeat; background-position: center; background-origin: content-box; background-size: contain;">
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xs-12" style="text-align:center">
-                     Data Hornet is an IT company based in Gillingham, Dorset. We specialise in web development, systems administration and training staff to be more proficient with your it systems.
-                </div>
-            </div>
-            <ul class="subMenu nav nav-pills nav-justified">
-                <li data-submenu-target="websites" class="active"><a>Websites</a></li>
-                <li data-submenu-target="consultancy"><a>Consultancy</a></li>
-                <li data-submenu-target="training"><a>Training</a></li>
-            </ul>
-                <div class="subPage" data-submenu="websites" style="display:block">
-                    <div class="row section">
-                        <div class="animated" data-animation="fadeInDown">
-                            <h4 style="text-align: center;">Scalable, stable and modern websites</h4>
-                            <h6 style="text-align: center; margin-bottom:24px;">Using only the latest and greatest technologies while retaining backwards compatibility</h6>
-                            <div class="flipbar row">
-                                <div class="bar col-sm-2">
-                                    <div>
-                                        <div class="front">
-                                            <img src="Icons/html5.png" />
-                                        </div>
-                                        <div class="back" style="background: #F16529">
-                                            <span>Up To Date</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar col-sm-2">
-                                    <div>
-                                        <div class="front">
-                                            <img src="Icons/email.png" />
-                                        </div>
-                                        <div class="back" style="background: #FFA725">
-                                            <span>Email</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar col-sm-2">
-                                    <div>
-                                        <div class="front">
-                                            <img src="Icons/facebook.png" />
-                                        </div>
-                                        <div class="back" style="background: #0182c4">
-                                            <span>Integration</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar col-sm-2">
-                                    <div>
-                                        <div class="front">
-                                            <img src="Icons/statistics.png" />
-                                        </div>
-                                        <div class="back" style="background: #56A5E1;">
-                                            <span>Statistics</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar col-sm-2">
-                                    <div>
-                                        <div class="front">
-                                            <img src="Icons/earth.png" />
-                                        </div>
-                                        <div class="back" style="background: #068300">
-                                            <span>Scalability</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar col-sm-2">
-                                    <div>
-                                        <div class="front">
-                                            <img src="Icons/support.png" />
-                                        </div>
-                                        <div class="back" style="background: #1958B7">
-                                            <span>Support</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row section">
-                        <div class="col-md-6 animated" data-animation="fadeInDown">
-                            <h4>Full control</h4>
-                            <h6>We can provide tools to allow you to control elements of your website. Such as adding new content, changing current content, rebranding and more</h6>
-                        </div>
-                        <div class="col-md-6 animated" data-animation="flipInX" style="padding:8px">
-                            <img src="Index/Home/img/adminpanel.jpg" style="display:block; width:100%; height:100%"/>
-                        </div>
-                    </div>
-                    <div class="row section">
-                        <h4>Pricing schemes to suit your needs</h4>
-                        <h6 style="margin-bottom: 1.5em;">All quotes will come with a series of pricing options to give full flexibility with your budget to make sure you get the best bang for your buck</h6>
-                        <div class="col-md-4">
-                            <div class="pricingOption panel">
-                                <div class="pricingOption-header panel-heading bg-hourly"><h5>Hourly</h5></div>
-                                <div class="panel-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">Fixed fee per hour</li>
-                                        <li class="list-group-item">Frozen for a year</li>
-                                        <li class="list-group-item">Get an time estimate for every task before committing to it</li>
-                                        <li class="list-group-item">Option for simple websites</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="pricingOption panel">
-                                <div class="pricingOption-header panel-heading bg-fixed"><h5>Fixed</h5></div>
-                                <div class="panel-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">Set fee for whole jobs</li>
-                                        <li class="list-group-item">Job will be complete in the quoted time with no price fluctuations</li>
-                                        <li class="list-group-item">Includes code handover once job is complete</li>
-                                        <li class="list-group-item">Option for larger websites</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="pricingOption panel">
-                                <div class="pricingOption-header panel-heading bg-mixed"><h5>Fixed & Supported</h5></div>
-                                <div class="panel-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">Set fee for whole jobs</li>
-                                        <li class="list-group-item"><b>Greatly</b> reduced hourly fee for site maintenance for a year</li>
-                                        <li class="list-group-item">Jobs not exceeding 1 hour are free</li>
-                                        <li class="list-group-item">Option for growing websites</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="subPage" data-submenu="consultancy" style="display:block">
-                    <div class="row section">
-                        Blah blah
-                    </div>
-                    <div class="row section">
-                        Blah blah
-                    </div>
-                    <div class="row section">
-                        Blah blah
-                    </div>
-                </div>
-                <div class="subPage" data-submenu="training" style="display:block">
-                    <div class="row section">
-                        Blah blah
-                    </div>
-                    <div class="row section">
-                        Blah blah
-                    </div>
-                    <div class="row section">
-                        Blah blah
-                    </div>
-                </div>
-        </div>
-        <div id="blogPage" class="panel page" style="overflow-y:scroll;" data-spy="scroll">
-            <div class="col-md-9">
-                <ul id="blog-posts" class="list-group"></ul>
-            </div>
-            <div class="col-md-3">
-                <ul id="blog-sidebar" class="nav bs-docs-sidebar bs-docs-sidenav affix" style="position:fixed; margin-top:0px;" data-spy="affix" data-offset-top="60" data-offset-bottom="0">
-                    <li>
-                        <a href="#js-overview">September 2014</a>
-                        <ul id="blog-sidebar-selection" class="nav"></ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div id="contactPage" class="panel page">
-            <div>
-                <div class="col-md-6">
-                    <iframe class="img-thumbnail" style="height:250px" height="250px" width="100%" frameborder="0" scrolling="no" src="./Index/Contact/map.html"></iframe>
-                </div>
-                <div class="col-md-6">
-                    <div id="contactHeader" class="page-header" style="vertical-align: top;">
-                        <h2 style="margin-top: 0px;">Contact Details</h2>
-                    </div>
-                    <p style="margin-bottom:8px">
-                        <strong>Data Hornet</strong><br />
-                        13 Ivy Close<br />
-                        Gillingham<br />
-                        Dorset<br />
-                        SP8 4UD<br />
-                    </p>
-                    <div class="input-group" style="margin-bottom:4px;">
-                        <div class="input-group-addon" style="min-width: 90px;">Phone</div>
-                        <div class="form-control">07527788222</div>
-                    </div>
-                    <div class="input-group">
-                        <div class="input-group-addon" style="min-width: 90px;">Email</div>
-                        <div class="form-control">enquries@datahornet.co.uk</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12" style="padding:10px;">
-                <button id="getInTouch" class="btn btn-primary" style="width:100%">Want to get in touch now? Click here...</button>
-                <style>
-                    #megaForm{
-                        display:none;
-                    }
-                </style>
-                <script>
-                    $(document).ready(function () {
-                        $("#getInTouch").on("click", function () {
-                            $("#contactDialog").modal("show")
-                        })
-                    })
-                </script>
-                <div id="contactDialog" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                <h4 class="modal-title">Get in touch</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="list-group">
-                                    <a class="list-group-item">
-                                        <div class="row">
-                                            <div class="form-group col-md-6 col-xs-12" style="margin-bottom:10px">
-                                                <label for="exampleInputEmail1">Your name</label>
-                                                <input class="form-control" id="name" placeholder="Joe Bloggs">
-                                            </div>
-                                            <div class="form-group col-md-6 col-xs-12">
-                                                <label for="exampleInputEmail1">Company name <i>(Optional)</i></label>
-                                                <input class="form-control" id="companyname" placeholder="Company">
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="list-group-item">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">E-mail address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="user@company.co.uk">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Phone number</label>
-                                            <input id="phonenumber" class="form-control">
-                                        </div>
-                                    </a>
-                                    <a class="list-group-item">
-                                        <script>
-                                            function checkOther() {
-                                                if ($("#jobType").val() == "Other")
-                                                {
-                                                    $("#otherType").fadeIn();
-                                                }else
-                                                {
-                                                    $("#otherType:visible").fadeOut();
-                                                }
-                                            }
-                                        </script>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">What are you looking for?</label>
-                                            <select class="form-control" id="jobType" onchange="checkOther()">
-                                                <option value="IT Consultancy">IT Consultancy</option>
-                                                <option value="Website">Website Development</option>
-                                                <option value="WebApp">Web App Development</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                            <input id="otherType" class="form-control" style="display:none;margin-top:5px" placeholder="Please enter the type of request" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Request details</label>
-                                            <textarea class="form-control" id="requestDetails" rows="4" placeholder="Please enter any further details that we may need to know"></textarea>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
-
-
-
-<!--<div class="row">
-    <div class="col-xs-12 col-md-12">
-        <div href="#" class="thumbnail">
-            <h2>El Bandito</h2>
-            <img src="Resources/Gallery/g1.jpg" class="gallerypic" />
-            <p>EH?</p>
-        </div>
-    </div>
-    <div class="col-xs-12 col-md-6">
-        <div href="#" class="thumbnail">
-            <h2>Pootang</h2>
-            <img src="Resources/Gallery/g2.png" class="gallerypic" />
-            <p>My hairy pootang</p>
-        </div>
-    </div>
-    <div class="col-xs-12 col-md-6">
-        <div href="#" class="thumbnail">
-            <h2>Fart</h2>
-            <img src="Resources/Gallery/g3.png" class="gallerypic" />
-            <p>My hairy fart</p>
-        </div>
-    </div>
-</div>-->
-
-
-<!--
-<div class="feature">
-    <div class="page-header" style="margin: 16px;">
-        <h3>Web Development<br /><small>Clean, simple and maintainable web apps</small></h3>
-    </div>
-    <ul data-liffect="zoomIn">
-        <li>Modern web standards (HTML5, CSS3, ect)</li>
-        <li>Code handover</li>
-        <li>Hosting services</li>
-    </ul>
-</div>
-<div class="feature">
-    <div class="page-header" style="margin: 16px;">
-        <h3>Consultation<br /><small>Honest and affordable advice</small></h3>
-    </div>
-    <ul data-liffect="zoomIn">
-        <li>Friendly, no obligation visit</li>
-        <li>All questions answered</li>
-    </ul>
-</div>-->

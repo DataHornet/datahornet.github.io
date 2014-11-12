@@ -1,0 +1,26 @@
+﻿.transfer {
+    position:fixed!important;
+    margin:0px!important;
+}
+.transfer-animate{
+    -webkit-transition-property: left top height width!important; /* Safari */
+    transition-property: left top height width!important;
+    
+    -webkit-transition-duration:1s!important;
+    transition-duration:1s!important;
+
+    z-index:2222!important;
+}
+transfer-noanimate{
+    -webkit-transition-property: none!important; /* Safari */
+    transition-property: none!important;
+    
+    -webkit-transition-duration:0!important;
+    transition-duration:0!important;
+
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+
+}

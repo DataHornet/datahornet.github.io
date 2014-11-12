@@ -1,10 +1,20 @@
-﻿
-/* FADEIN EFFECT START */
+﻿.animated, .animated-quick, .animated-xquick{
+    -webkit-animation-fill-mode: forwards; 
+    animation-fill-mode: forwards; 
+}
 .animated { 
-    -webkit-animation-duration: 1s; 
-    animation-duration: 1s; 
-    -webkit-animation-fill-mode: both; 
-    animation-fill-mode: both; 
+    -webkit-animation-duration: 1000ms; 
+    animation-duration: 1000ms; 
+} 
+
+.animated-quick { 
+    -webkit-animation-duration: 600ms; 
+    animation-duration: 600ms; 
+} 
+
+.animated-xquick { 
+    -webkit-animation-duration: 300ms; 
+    animation-duration: 300ms; 
 } 
 
 @-webkit-keyframes fadeInDown { 
@@ -114,4 +124,176 @@
 .bounceInRight { 
     -webkit-animation-name: bounceInRight; 
     animation-name: bounceInRight; 
+}
+
+@-webkit-keyframes bounceOutDown { 
+    0% { 
+        -webkit-transform: translateY(0); 
+    } 
+    20% { 
+        opacity: 1; 
+        -webkit-transform: translateY(-20px); 
+    } 
+    100% { 
+        opacity: 0; 
+        -webkit-transform: translateY(2000px); 
+    } 
+} 
+@keyframes bounceOutDown { 
+    0% { 
+        transform: translateY(0); 
+    } 
+    20% { 
+        opacity: 1; 
+        transform: translateY(-20px); 
+    } 
+    100% { 
+        opacity: 0; 
+        transform: translateY(2000px); 
+    } 
+} 
+.bounceOutDown { 
+    -webkit-animation-name: bounceOutDown; 
+    animation-name: bounceOutDown; 
+}
+
+@-webkit-keyframes bounceInDown { 
+   0% { 
+       opacity: 0; 
+        -webkit-transform: translateY(-2000px); 
+    } 
+    60% { 
+        opacity: 1; 
+        -webkit-transform: translateY(30px); 
+    } 
+    80% { 
+        -webkit-transform: translateY(-10px); 
+    } 
+    100% { 
+        -webkit-transform: translateY(0); 
+    } 
+} 
+
+@keyframes bounceInDown { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(-2000px); 
+    } 
+    60% { 
+        opacity: 1; 
+        transform: translateY(30px); 
+    } 
+    80% { 
+        transform: translateY(-10px); 
+    } 
+    100% { 
+        transform: translateY(0); 
+    } 
+} 
+
+.bounceInDown { 
+    -webkit-animation-name: bounceInDown; 
+    animation-name: bounceInDown; 
+}
+
+@-webkit-keyframes bounceOutUp { 
+    0% { 
+        -webkit-transform: translateY(0); 
+    } 
+    20% { 
+        opacity: 1; 
+        -webkit-transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 0; 
+        -webkit-transform: translateY(-2000px); 
+    } 
+} 
+@keyframes bounceOutUp { 
+    0% { 
+        transform: translateY(0); 
+    } 
+    20% { 
+        opacity: 1; 
+        transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 0; 
+        transform: translateY(-2000px); 
+    } 
+} 
+.bounceOutUp { 
+    -webkit-animation-name: bounceOutUp; 
+    animation-name: bounceOutUp; 
+}
+
+@-webkit-keyframes bounceInUp { 
+    0% { 
+        opacity: 0; 
+        -webkit-transform: translateY(2000px); 
+    } 
+    60% { 
+        opacity: 1; 
+        -webkit-transform: translateY(-30px); 
+    } 
+    80% { 
+        -webkit-transform: translateY(10px); 
+    } 
+    100% { 
+        -webkit-transform: translateY(0); 
+    } 
+} 
+
+@keyframes bounceInUp { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(2000px); 
+    } 
+    60% { 
+        opacity: 1; 
+        transform: translateY(-30px); 
+    } 
+    80% { 
+        transform: translateY(10px); 
+    } 
+    100% { 
+        transform: translateY(0); 
+    } 
+} 
+
+.bounceInUp { 
+    -webkit-animation-name: bounceInUp; 
+    animation-name: bounceInUp; 
+}
+
+@-webkit-keyframes fadeIn { 
+    0% {opacity: 0;} 
+    100% {opacity: 1;} 
+} 
+@keyframes fadeIn { 
+    0% {opacity: 0;} 
+    100% {opacity: 1;} 
+} 
+.fadeIn { 
+    -webkit-animation-name: fadeIn; 
+    animation-name: fadeIn; 
+}
+
+
+@-webkit-keyframes fadeOut { 
+    0% {opacity: 1;} 
+    100% {opacity: 0;} 
+} 
+@keyframes fadeOut { 
+    0% {opacity: 1;} 
+    100% {opacity: 0;} 
+} 
+.fadeOut { 
+    -webkit-animation-name: fadeOut; 
+    animation-name: fadeOut; 
+}
+
+.textPlaceholder{
+    position:relative;
+    visibility:hidden;
 }

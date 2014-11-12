@@ -3,9 +3,7 @@
     height: 100%;
 }
 body {
-    padding-top: 95px;
     overflow-x: hidden;
-    width:90%;
     margin:auto;
 }
 
@@ -19,20 +17,13 @@ body {
     height: 100%;
     width: 100%;
     margin-bottom: 0px;
-    display: none;
-    position: absolute;
     box-sizing: border-box;
-    padding: 8px;
     background-color: transparent;
 }
 #coreNavBar, #accountNav{
     z-index:20;
 }
 #accountNav{
-    position:fixed;
-    top:0;
-    left:0;
-    margin:0;
     padding:4px;
     background-color:black;
     height:30px;
@@ -50,7 +41,6 @@ body {
     padding-left:8px;
 }
 #coreNavBar {
-    opacity: 1;
     font-size: 16px;
 }
 #footer{
@@ -68,20 +58,382 @@ body {
     margin:0px;
 }
 
-
-@media (min-width: 768px) {
-    #accountNav{
-    padding-right: 50px;
-    }
-
+.smoothText{
+    -webkit-font-smoothing: antialiased !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+#mainCarosel {
+    background: -moz-linear-gradient(top, rgba(249,198,103,0.5) 0%, rgba(247,150,33,0.5) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,198,103,0.5)), color-stop(100%,rgba(247,150,33,0.5))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(249,198,103,0.5) 0%,rgba(247,150,33,0.5) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(249,198,103,0.5) 0%,rgba(247,150,33,0.5) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(249,198,103,0.5) 0%,rgba(247,150,33,0.5) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(249,198,103,0.5) 0%,rgba(247,150,33,0.5) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80f9c667', endColorstr='#80f79621',GradientType=0 ); /* IE6-9 */
+}
+.active a{
+    -moz-transition:all 0.5s ease;
+    -ms-transition:all 0.5s ease;
+    -o-transition:all 0.5s ease;
+    transition:all 0.5s ease;
+}
+#features{
+    border:1px solid red;
+    box-shadow:2px 2px 2px red;
+    height:60px;
+}
+.feature {
+    display:none;
+}
+.feature:first-child{
+    display:block;
+}
+.bubbleText{
+    pointer-events: none;
+}
+.subMenu 
+{
+    font-size: Small;
+    border-bottom: 1px solid lightblue;
+    border-top: 1px solid lightblue;
+}
+.subMenu a{
+    border-bottom-left-radius:0px!important;
+    border-bottom-right-radius:0px!important;
+}
+.subPage{
+    display:none;
+    left: 2%;
+    width: 96%;
+    top: 2%;
+    position: absolute;
+    margin-top: 100px;
+}
+.section{
+    min-height:200px;
+    margin:0px;
+    padding:24px;
+    text-align:center;
+    
+}
+.section:nth-child(odd){
+    background-color:#F8F8F8;
+}
+.section:nth-child(even){
+    background-color:#E8E8E8 ;
 }
 
-@media (max-width: 768px) {
-    body {
-    padding-top: 95px;
-    overflow-x: hidden;
-    width:100%;
-    margin:auto;
+.pricingOption{
+    min-height:100%;
+}
+.pricingOption-header{
+
+}
+.navbarButton{
+    display: block;
+    height: 16px;
+    margin-top: 24px;
+    margin-bottom: 22px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.navbarLink{
+    transition: box-shadow 300ms;
+}
+.navbarLink:hover{
+    box-shadow: 0px 2px 0px #ff9933;
+}
+
+.bubbleText,.bubbleButton,.mainlogo {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    user-select: none;
+
+    top: 0px;
+    text-align: center;
+    font-size: 22px;
+    position:absolute;
+}
+.bubbleButton, .mainlogo{
+    transition-property: opacity, -webkit-filter, width, height;
+     -webkit-transition-duration: 700ms;
+    -moz-transition-duration: 700ms;
+    -o-transition-duration: 700ms;
+    transition-duration: 700ms;
+    transition-delay: 0s;
+    transform-origin: top left;
+    -webkit-transition: 200ms ease-in-out;
+    -moz-transition: 200ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    transform-origin: center;
+}
+.bubbleButton{
+    cursor:pointer;
+}
+.box-shifted {
+    margin-top: -1px;
+    top: -64px !important;
+    z-index: 222;
+}
+
+.logo-background{
+    height: 100%;
+    margin: 0px;
+    position:relative;
+}
+
+.background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.expandcolapse {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+@media (max-width: 767px){
+    .expandcolapse {
+        background: url("img/ExpandColapse_Small.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 13px;
+    }
+    .background {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    
+        background: url("img/HomeBgFarm_XSmall.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;  
+    }
+    .mainlogo {
+        background-image: url("img/MainLogoExpanded_Small.png");
+    }
+    .bloghex{
+        background-image: url("img/BlogHex_Small.png");
+    }
+    .blogtext{
+        background-image: url("img/BlogText_Small.png");
+        /*display: block;
+        width: 40%;
+        margin-top: 20%;
+        margin-left: 30%;*/
+    }
+    .consultancyhex {
+        background-image: url("img/ConsultHex_Small.png");
+    }
+    .consultancytext {
+        background-image: url("img/ConsultText_Small.png");
+    }
+
+    .getintouchhex {
+        background-image: url("img/GetInTouchHex_Small.png");
+    }
+    .getintouchtext {
+        background-image: url("img/GetInTouchText_Small.png");
+    }
+
+    .systemshex {
+        background-image: url("img/SystemsHex_Small.png");
+    }
+    .systemstext {
+        background-image: url("img/SystemsText_Small.png");
+    }
+
+    .traininghex{
+        background-image: url("img/TrainingHex_Small.png");
+    }
+    .trainingtext{
+        background-image: url("img/TrainingText_Small.png");
+    }
+
+    .webdevhex{
+        background-image: url("img/WebDevHex_Small.png");
+    }
+    .webdevtext{
+        background-image: url("img/WebDevText_Small.png");
     }
 }
 
+@media (min-width: 768px){
+    .expandcolapse {
+        background: url("img/ExpandColapse_Medium.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 26px;
+    }
+    .background {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    
+        background: url("img/HomeBgFarm_Medium.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .mainlogo {
+        background-image: url("img/MainLogoExpanded_Medium.png");
+    }
+    .bloghex{
+        background-image: url("img/BlogHex_Medium.png");
+    }
+    .blogtext{
+        background-image: url("img/BlogText_Medium.png");
+        /*display: block;
+        width: 40%;
+        margin-top: 20%;
+        margin-left: 30%;*/
+    }
+    .consultancyhex {
+        background-image: url("img/ConsultHex_Medium.png");
+    }
+    .consultancytext {
+        background-image: url("img/ConsultText_Medium.png");
+    }
+
+    .getintouchhex {
+        background-image: url("img/GetInTouchHex_Medium.png");
+    }
+    .getintouchtext {
+        background-image: url("img/GetInTouchText_Medium.png");
+    }
+
+    .systemshex {
+        background-image: url("img/SystemsHex_Medium.png");
+    }
+    .systemstext {
+        background-image: url("img/SystemsText_Medium.png");
+    }
+
+    .traininghex{
+        background-image: url("img/TrainingHex_Medium.png");
+    }
+    .trainingtext{
+        background-image: url("img/TrainingText_Medium.png");
+    }
+
+    .webdevhex{
+        background-image: url("img/WebDevHex_Medium.png");
+    }
+    .webdevtext{
+        background-image: url("img/WebDevText_Medium.png");
+    }
+}
+
+@media (min-width: 1366px){
+    .expandcolapse {
+        background: url("img/ExpandColapse_Large.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 150px;
+        height: 39px;
+    }
+    .background {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    
+        background: url("img/HomeBgFarm_Large.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .mainlogo {
+        background-image: url("img/MainLogoExpanded_Large.png");
+    }
+    .bloghex{
+        background-image: url("img/BlogHex_Large.png");
+    }
+    .blogtext{
+        background-image: url("img/BlogText_Large.png");
+        /*display: block;
+        width: 40%;
+        margin-top: 20%;
+        margin-left: 30%;*/
+    }
+    .consultancyhex {
+        background-image: url("img/ConsultHex_Large.png");
+    }
+    .consultancytext {
+        background-image: url("img/ConsultText_Large.png");
+    }
+
+    .getintouchhex {
+        background-image: url("img/GetInTouchHex_Large.png");
+    }
+    .getintouchtext {
+        background-image: url("img/GetInTouchText_Large.png");
+    }
+
+    .systemshex {
+        background-image: url("img/SystemsHex_Large.png");
+    }
+    .systemstext {
+        background-image: url("img/SystemsText_Large.png");
+    }
+
+    .traininghex{
+        background-image: url("img/TrainingHex_Large.png");
+    }
+    .trainingtext{
+        background-image: url("img/TrainingText_Large.png");
+    }
+
+    .webdevhex{
+        background-image: url("img/WebDevHex_Large.png");
+    }
+    .webdevtext{
+        background-image: url("img/WebDevText_Large.png");
+    }
+}
+
+.noblur{
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+}
+.blur {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+}
+.nogreyscale{
+
+}
+.greyscale{
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+}
+.opacity50{
+    opacity:0.5;
+}
+.opacity75{
+    opacity:0.75;
+}
+.blur.greyscale {
+    filter: blur(2px) grayscale(100%);
+    -webkit-filter: blur(2px) grayscale(100%);
+    -moz-filter: blur(2px) grayscale(100%);
+    -o-filter: blur(2px) grayscale(100%);
+}
+.enlarge{
+    transform: scale(1.05);
+}
