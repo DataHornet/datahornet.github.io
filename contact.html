@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div class="row panel">
     <div class="col-md-6">
         <iframe class="img-thumbnail" style="height:250px" height="250px" width="100%" frameborder="0" scrolling="no" src="./Index/Contact/map.html"></iframe>
     </div>
@@ -22,84 +22,84 @@
             <div class="form-control">enquries@datahornet.co.uk</div>
         </div>
     </div>
-</div>
-<div class="col-md-12" style="padding:10px;">
-    <button id="getInTouch" class="btn btn-primary" style="width:100%">Want to get in touch now? Click here...</button>
-    <style>
-        #megaForm {
-            display: none;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
-            $("#getInTouch").on("click", function () {
-                $("#contactDialog").modal("show")
+    <div class="col-md-12" style="padding:10px;">
+        <button id="getInTouch" class="btn btn-primary" style="width:100%">Want to get in touch now? Click here...</button>
+        <style>
+            #megaForm {
+                display: none;
+            }
+        </style>
+        <script>
+            $(document).ready(function () {
+                $("#getInTouch").on("click", function () {
+                    $("#contactDialog").modal("show")
+                })
             })
-        })
-    </script>
-    <div id="contactDialog" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Get in touch</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="list-group">
-                        <a class="list-group-item">
-                            <div class="row">
-                                <div class="form-group col-md-6 col-xs-12" style="margin-bottom:10px">
-                                    <label for="exampleInputEmail1">Your name</label>
-                                    <input class="form-control" id="name" placeholder="Joe Bloggs">
-                                </div>
-                                <div class="form-group col-md-6 col-xs-12">
-                                    <label for="exampleInputEmail1">Company name <i>(Optional)</i></label>
-                                    <input class="form-control" id="companyname" placeholder="Company">
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">E-mail address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="user@company.co.uk">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Phone number</label>
-                                <input id="phonenumber" class="form-control">
-                            </div>
-                        </a>
-                        <a class="list-group-item">
-                            <script>
-                                function checkOther() {
-                                    if ($("#jobType").val() == "Other") {
-                                        $("#otherType").fadeIn();
-                                    } else {
-                                        $("#otherType:visible").fadeOut();
-                                    }
-                                }
-                            </script>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">What are you looking for?</label>
-                                <select class="form-control" id="jobType" onchange="checkOther()">
-                                    <option value="IT Consultancy">IT Consultancy</option>
-                                    <option value="Website">Website Development</option>
-                                    <option value="WebApp">Web App Development</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <input id="otherType" class="form-control" style="display:none;margin-top:5px" placeholder="Please enter the type of request" />
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Request details</label>
-                                <textarea class="form-control" id="requestDetails" rows="4" placeholder="Please enter any further details that we may need to know"></textarea>
-                            </div>
-                        </a>
+        </script>
+        <div id="contactDialog" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Get in touch</h4>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Submit</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                    <div class="modal-body">
+                        <div class="list-group">
+                            <a class="list-group-item">
+                                <div class="row">
+                                    <div class="form-group col-md-6 col-xs-12" style="margin-bottom:10px">
+                                        <label for="exampleInputEmail1">Your name</label>
+                                        <input class="form-control" id="name" placeholder="Joe Bloggs">
+                                    </div>
+                                    <div class="form-group col-md-6 col-xs-12">
+                                        <label for="exampleInputEmail1">Company name <i>(Optional)</i></label>
+                                        <input class="form-control" id="companyname" placeholder="Company">
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="list-group-item">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">E-mail address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="user@company.co.uk">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Phone number</label>
+                                    <input id="phonenumber" class="form-control">
+                                </div>
+                            </a>
+                            <a class="list-group-item">
+                                <script>
+                                    function checkOther() {
+                                        if ($("#jobType").val() == "Other") {
+                                            $("#otherType").fadeIn();
+                                        } else {
+                                            $("#otherType:visible").fadeOut();
+                                        }
+                                    }
+                                </script>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">What are you looking for?</label>
+                                    <select class="form-control" id="jobType" onchange="checkOther()">
+                                        <option value="IT Consultancy">IT Consultancy</option>
+                                        <option value="Website">Website Development</option>
+                                        <option value="WebApp">Web App Development</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <input id="otherType" class="form-control" style="display:none;margin-top:5px" placeholder="Please enter the type of request" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Request details</label>
+                                    <textarea class="form-control" id="requestDetails" rows="4" placeholder="Please enter any further details that we may need to know"></textarea>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div>
 </div>

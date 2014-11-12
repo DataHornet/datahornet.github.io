@@ -119,6 +119,11 @@
     })
 .directive("dhBlog", function () {
     return {
-        templateUrl:"blog.html"
+        templateUrl: "blog.html"
+    }
+})
+.directive("dhContact", function () {
+    return {
+        templateUrl: "contact.html"
     }
 })
